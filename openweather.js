@@ -30,8 +30,10 @@ async function refreshData(city = null) {
   const selectedCity = city || document.getElementById('citySelect').value || "Manila";
   try {
     const res = await fetch(
-      `https://api.openweathermap.org/data/2.5/forecast?q=${"Manila"}&units=metric&appid=${"0723d71a05e58ae3f7fc91e39a901e6"}`
+      `https://api.openweathermap.org/data/2.5/forecast?q=Manila&units=metric&appid=0723d71a05e58ae3f7fc91e39a901e6b`
     );
+    
+
     const data = await res.json();
 
     if (!data?.list) throw new Error("Invalid API response");
