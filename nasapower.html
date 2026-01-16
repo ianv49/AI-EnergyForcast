@@ -1,19 +1,78 @@
-<section>
-    <label for="nasaCitySelect">Select City:</label>
-    <select id="nasaCitySelect">
-      <option value="Manila">Manila</option>
-      <option value="Tokyo">Tokyo</option>
-      <option value="Sydney">Sydney</option>
-    </select>
-    <button onclick="refreshNASAData()">🚀 Refresh NASA POWER Data</button>
-    <button onclick="saveLogToFile()">💾 Save Log File</button>
-  
-    <h3>NASA Wind Data</h3>
-    <table id="nasaWindTable">...</table>
-  
-    <h3>NASA Solar Data</h3>
-    <table id="nasaSolarTable">...</table>
-  </section>
-  
-  <div id="statusRibbon"><div id="statusMessages"></div></div>
-  
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>NASA POWER API Data</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" href="docs/assets/logo_kalbariSun1.jpeg">
+  <style>
+    body { font-family: 'Segoe UI', sans-serif; margin: 0; padding: 0; display: flex; background: #f0f8ff; color: #333; }
+    .sidebar { width: 220px; background: linear-gradient(to bottom, #0077be, #00cc66); color: white; height: 100vh; position: fixed; top: 0; left: 0; display: flex; flex-direction: column; padding-top: 20px; }
+    .menu-item { padding: 15px; cursor: pointer; }
+    .menu-item a { color: white; text-decoration: none; display: block; }
+    .menu-item:hover { background: rgba(255,255,255,0.2); }
+    .content { margin-left: 240px; padding: 20px; flex: 1; }
+    header { background: linear-gradient(to right, #0077be, #00cc66); color: white; padding: 20px; text-align: center; }
+    header img { height: 60px; vertical-align: middle; margin-right: 10px; }
+    header h1 { display:inline-block; vertical-align:middle; margin:0; font-size:1.5em; }
+    header p { margin-top:5px; font-size:0.9em; }
+    table { border-collapse: collapse; width: 100%; margin-top: 20px; }
+    th, td { border: 1px solid #333; padding: 8px; text-align: center; }
+    #statusRibbon { margin-top: 20px; max-height: calc(1.2em * 30); overflow-y: auto; background: #0077be; color: white; padding: 10px; font-size: 0.9em; }
+    #statusMessages p { margin: 2px 0; }
+    button { margin-top: 10px; padding: 8px 16px; font-weight: bold; cursor: pointer; }
+  </style>
+</head>
+<body>
+  <div class="sidebar">
+    <h2>Menu</h2>
+    <div class="menu-item"><a href="index.html">🏠 Home</a></div>
+    <div class="menu-item"><a href="dashboard.html">📊 Dashboard</a></div>
+    <div class="menu-item"><a href="openweather.html">🌤️ OpenWeather API</a></div>
+    <div class="menu-item"><a href="nasapower.html">🚀 NASA POWER API</a></div>
+    <div class="menu-item"><a href="index.html#about">ℹ️ About</a></div>
+  </div>
+
+  <div class="content">
+    <header>
+      <img src="docs/assets/logo_kalbariSun1.jpeg" alt="Logo">
+      <h1>AI-Driven Predictive Maintenance for Renewable Energy Assets</h1>
+      <p>Using Web-Sourced Sensor Data</p>
+    </header>
+
+    <section>
+      <label for="nasaCitySelect">Select City:</label>
+      <select id="nasaCitySelect">
+        <option value="Manila">Manila</option>
+        <option value="Tokyo">Tokyo</option>
+        <option value="Sydney">Sydney</option>
+      </select>
+      <button onclick="refreshNASAData()">🚀 Refresh NASA POWER Data</button>
+      <button onclick="saveLogToFile()">💾 Save Log File</button>
+
+      <h3>NASA Wind Data</h3>
+      <table id="nasaWindTable">
+        <thead><tr><th>DateTime</th><th>Wind Speed (m/s)</th></tr></thead>
+        <tbody></tbody>
+      </table>
+
+      <h3>NASA Solar Data</h3>
+      <table id="nasaSolarTable">
+        <thead>
+          <tr>
+            <th>DateTime</th>
+            <th>Temperature (°C)</th>
+            <th>Humidity (%)</th>
+            <th>Solar Radiation (W/m²)</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </section>
+
+    <div id="statusRibbon"><div id="statusMessages"></div></div>
+  </div>
+
+  <script src="js/nasapower.js"></script>
+</body>
+</html>
