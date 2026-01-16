@@ -4,7 +4,9 @@
   <meta charset="UTF-8">
   <title>OpenWeather API Data</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Favicon -->
   <link rel="icon" type="image/png" href="docs/assets/logo_kalbariSun1.jpeg">
+  <!-- Shared Styles -->
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -20,35 +22,62 @@
 
   <!-- Content -->
   <div class="content">
+    <!-- Header -->
     <header>
       <img src="docs/assets/logo_kalbariSun1.jpeg" alt="Logo">
       <h1>AI-Driven Predictive Maintenance for Renewable Energy Assets</h1>
       <p>Using Web-Sourced Sensor Data</p>
     </header>
 
-    <section>
+    <!-- OpenWeather Section -->
+    <section id="openweather">
+      <h2>OpenWeather Forecast</h2>
+
+      <!-- City Selector -->
       <label for="citySelect">Select City:</label>
       <select id="citySelect">
         <option value="Manila" selected>Manila</option>
         <option value="Tokyo">Tokyo</option>
         <option value="Sydney">Sydney</option>
       </select>
+
+      <!-- Buttons -->
       <button onclick="refreshData()">Refresh</button>
       <button onclick="saveLogToFile()">💾 Save Log File</button>
 
+      <!-- Wind Table -->
       <h3>Wind Data</h3>
       <table id="windTable">
-        <thead><tr><th>DateTime</th><th>Wind Speed (m/s)</th></tr></thead>
+        <thead>
+          <tr><th>DateTime</th><th>Wind Speed (m/s)</th></tr>
+        </thead>
         <tbody></tbody>
       </table>
 
+      <!-- Solar Table -->
       <h3>Solar Data</h3>
       <table id="solarTable">
-        <thead><tr><th>DateTime</th><th>Temperature (°C)</th><th>Humidity (%)</th><th>Cloud Cover (%)</th></tr></thead>
+        <thead>
+          <tr>
+            <th>DateTime</th>
+            <th>Temperature (°C)</th>
+            <th>Humidity (%)</th>
+            <th>Cloud Cover (%)</th>
+          </tr>
+        </thead>
         <tbody></tbody>
       </table>
+
+      <!-- Charts -->
+      <div class="charts-container">
+        <canvas id="windChart"></canvas>
+        <canvas id="tempChart"></canvas>
+        <canvas id="humidityChart"></canvas>
+        <canvas id="cloudChart"></canvas>
+      </div>
     </section>
 
+    <!-- Status Ribbon -->
     <div id="statusRibbon"><div id="statusMessages"></div></div>
   </div>
 
