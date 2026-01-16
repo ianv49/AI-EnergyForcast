@@ -1,1 +1,20 @@
-
+<section id="dashboard">
+    <h2>Dashboard</h2>
+    <label for="dashboardCity">Select City:</label>
+    <select id="dashboardCity">
+      <option value="Manila">Manila</option>
+      <option value="Tokyo">Tokyo</option>
+      <option value="Sydney">Sydney</option>
+    </select>
+    <button onclick="refreshData(); refreshNASAData();">🔄 Refresh Dashboard Data</button>
+  
+    <div class="charts-container">
+      <canvas id="windChart"></canvas>
+      <canvas id="tempChart"></canvas>
+      <canvas id="humidityChart"></canvas>
+      <canvas id="cloudChart"></canvas>
+    </div>
+  </section>
+  
+  <div id="statusRibbon"><div id="statusMessages"></div></div>
+  

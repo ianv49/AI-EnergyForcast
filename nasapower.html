@@ -1,1 +1,19 @@
-
+<section>
+    <label for="nasaCitySelect">Select City:</label>
+    <select id="nasaCitySelect">
+      <option value="Manila">Manila</option>
+      <option value="Tokyo">Tokyo</option>
+      <option value="Sydney">Sydney</option>
+    </select>
+    <button onclick="refreshNASAData()">🚀 Refresh NASA POWER Data</button>
+    <button onclick="saveLogToFile()">💾 Save Log File</button>
+  
+    <h3>NASA Wind Data</h3>
+    <table id="nasaWindTable">...</table>
+  
+    <h3>NASA Solar Data</h3>
+    <table id="nasaSolarTable">...</table>
+  </section>
+  
+  <div id="statusRibbon"><div id="statusMessages"></div></div>
+  
