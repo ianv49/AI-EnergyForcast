@@ -1,5 +1,5 @@
 // ===============================
-// API KEYS
+// API KEY (from big file)
 // ===============================
 const openWeatherKey = '0723d71a05e58ae3f7fc91e39a901e6b';
 
@@ -15,6 +15,7 @@ function updateStatus(line1, line2) {
   entry.textContent = `[${timestamp}] ${line1} - ${line2}`;
   log.appendChild(entry);
 
+  // Keep log manageable
   while (log.children.length > 50) log.removeChild(log.firstChild);
   log.scrollTop = log.scrollHeight;
 }
@@ -25,7 +26,8 @@ function updateStatus(line1, line2) {
 async function refreshData(city = null) {
   updateStatus("🔄 Refreshing OpenWeather data...", "Preparing to load");
 
-  const selectedCity = city || document.getElementById('citySelect').value;
+  // Default to Manila if no city passed
+  const selectedCity = city || document.getElementById('citySelect').value || "Manila";
   try {
     const res = await fetch(
       `https://api.openweathermap.org/data/2.5/forecast?q=${selectedCity}&units=metric&appid=${openWeatherKey}`
@@ -39,6 +41,7 @@ async function refreshData(city = null) {
     windBody.innerHTML = '';
     solarBody.innerHTML = '';
 
+    // Show last 15 forecast entries
     for (let i = 0; i < Math.min(15, data.list.length); i++) {
       const entry = data.list[i];
       const dt = new Date(entry.dt * 1000).toLocaleString();
