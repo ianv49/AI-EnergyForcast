@@ -30,7 +30,7 @@ async function refreshData(city = null) {
   const selectedCity = city || document.getElementById('citySelect').value || "Manila";
   try {
     const res = await fetch(
-      `https://api.openweathermap.org/data/2.5/forecast?q=${selectedCity}&units=metric&appid=${openWeatherKey}`
+      `https://api.openweathermap.org/data/2.5/forecast?q=${"Manila"}&units=metric&appid=${"0723d71a05e58ae3f7fc91e39a901e6"}`
     );
     const data = await res.json();
 
