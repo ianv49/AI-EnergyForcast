@@ -1,5 +1,5 @@
 // ===============================
-// API KEY (from big file)
+// API KEY (from your big file)
 // ===============================
 const openWeatherKey = '0723d71a05e58ae3f7fc91e39a901e6b';
 
@@ -30,10 +30,8 @@ async function refreshData(city = null) {
   const selectedCity = city || document.getElementById('citySelect').value || "Manila";
   try {
     const res = await fetch(
-      `https://api.openweathermap.org/data/2.5/forecast?q=Manila&units=metric&appid=0723d71a05e58ae3f7fc91e39a901e6b`
+      `https://api.openweathermap.org/data/2.5/forecast?q=${selectedCity}&units=metric&appid=${openWeatherKey}`
     );
-    
-
     const data = await res.json();
 
     if (!data?.list) throw new Error("Invalid API response");
@@ -57,7 +55,7 @@ async function refreshData(city = null) {
       solarBody.innerHTML += `<tr><td>${dt}</td><td>${temp}</td><td>${humidity}</td><td>${cloud}</td></tr>`;
     }
 
-    updateStatus("✅ OpenWeather data ready", "Tables updated successfully");
+    updateStatus("✅ OpenWeather data ready", `Tables updated for ${selectedCity}`);
   } catch (err) {
     updateStatus("⚠️ Error occurred", err.message);
   }
@@ -90,3 +88,10 @@ function saveLogToFile() {
   a.click();
   URL.revokeObjectURL(url);
 }
+
+// ===============================
+// AUTO-LOAD DEFAULT CITY (Manila)
+// ===============================
+document.addEventListener("DOMContentLoaded", () => {
+  refreshData("Manila");
+});
